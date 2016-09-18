@@ -10,16 +10,23 @@ function Translator(englishPhrase = "") {
     let firstLetter = englishPhrase[0],
       lastLetter = englishPhrase[englishPhrase.length -1]
 
-    if(isVowel(firstLetter)) {
-      if(isConsonant(lastLetter)) {
+    if (isVowel(firstLetter)) {
+      if (isConsonant(lastLetter)) {
         englishPhrase += 'ay'
       }
-      if(isVowel(lastLetter)) {
+      if (isVowel(lastLetter)) {
         englishPhrase += 'yay'
       }
-      if(lastLetter === 'y') {
+      if (lastLetter === 'y') {
         englishPhrase += 'nay'
       }
+    }
+    if (isConsonant(firstLetter)) {
+      let wordArray = englishPhrase.split("")
+      wordArray.push(firstLetter)
+      wordArray.push('ay')
+      wordArray.shift()
+      englishPhrase = wordArray.join("");
     }
     return englishPhrase;
   }
