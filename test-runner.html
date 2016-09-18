@@ -6,11 +6,17 @@
   </head>
   <body>
     <div id="mocha"></div>
-    
+
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/chai/chai.js"></script>
     <script>mocha.setup('bdd')</script>
+    
+    <!-- My code to test -->
+    <script src="src/pig-latin.js"></script>
 
+    <!-- My test files -->
+    <script src="test/pig-latin-spec.js"></script>
+    
     <script>
       mocha.run();
     </script>
