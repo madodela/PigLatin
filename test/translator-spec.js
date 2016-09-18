@@ -14,6 +14,10 @@
         let translate = new Translator("ask")
         expect(translate.toPigLatin()).to.equal("askay")
       })
+      it('Append "yay" to the word if it ends with vowel', function () {
+        let translate = new Translator("apple")
+        expect(translate.toPigLatin()).to.equal("appleyay")
+      })
     })
   })
 })()

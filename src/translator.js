@@ -14,6 +14,9 @@ function Translator(englishPhrase = "") {
       if(isConsonant(lastLetter)) {
         englishPhrase += 'ay'
       }
+      if(isVowel(lastLetter)) {
+        englishPhrase += 'yay'
+      }
     }
     return englishPhrase;
   }
