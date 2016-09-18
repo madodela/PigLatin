@@ -18,6 +18,10 @@
         let translate = new Translator("apple")
         expect(translate.toPigLatin()).to.equal("appleyay")
       })
+      it('Append "nay" to the word if it ends with "y"', function () {
+        let translate = new Translator("any")
+        expect(translate.toPigLatin()).to.equal("anynay")
+      })
     })
   })
 })()

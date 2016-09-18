@@ -17,6 +17,9 @@ function Translator(englishPhrase = "") {
       if(isVowel(lastLetter)) {
         englishPhrase += 'yay'
       }
+      if(lastLetter === 'y') {
+        englishPhrase += 'nay'
+      }
     }
     return englishPhrase;
   }
@@ -25,6 +28,6 @@ function Translator(englishPhrase = "") {
       return vowels.test(letter)
   }
   function isConsonant (letter) {
-    return alphabet.test(letter) && !vowels.test(letter)
+    return alphabet.test(letter) && !vowels.test(letter) && letter !== 'y'
   }
 }
