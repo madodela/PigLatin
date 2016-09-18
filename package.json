@@ -1,0 +1,23 @@
+{
+  "name": "pig-latin-translator",
+  "version": "1.0.0",
+  "description": "This package handles dependencies for pig latin applicatin",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madodela/PigLatin.git"
+  },
+  "author": "@madodela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madodela/PigLatin/issues"
+  },
+  "homepage": "https://github.com/madodela/PigLatin#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
+}
