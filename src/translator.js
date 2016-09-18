@@ -1,8 +1,27 @@
-function Translator (englishPhrase = "") {
+function Translator(englishPhrase = "") {
+  const vowels = /[aeiou]/,
+    alphabet = /[b-z]/
+
   this.toPigLatin = function () {
-    let pigLatinWord = ''
     if (!englishPhrase) {
       return null;
     }
+
+    let firstLetter = englishPhrase[0],
+      lastLetter = englishPhrase[englishPhrase.length -1]
+
+    if(isVowel(firstLetter)) {
+      if(isConsonant(lastLetter)) {
+        englishPhrase += 'ay'
+      }
+    }
+    return englishPhrase;
+  }
+
+  function isVowel (letter) {
+      return vowels.test(letter)
+  }
+  function isConsonant (letter) {
+    return alphabet.test(letter) && !vowels.test(letter)
   }
 }
