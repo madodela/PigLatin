@@ -11,4 +11,11 @@ describe('Pig Latin', function () {
     let pigLatin = new PigLatin('hello world')
     expect(pigLatin.phraseHasSpaces()).to.not.be.false
   })
+
+  it('The string can be reset without re-initializing', function () {
+    let pigLatin = new PigLatin('hello world')
+    expect(pigLatin.setPhrase).to.exist
+    pigLatin.setPhrase('good bye world')
+    expect(pigLatin.getPhrase()).to.equal('good bye world')
+  })
 })
