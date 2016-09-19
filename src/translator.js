@@ -1,6 +1,6 @@
 function Translator(englishPhrase = new PigLatin()) {
-  const vowels = /[aeiou]/,
-    alphabet = /[b-z]/,
+  const vowels = /[aeiou]/i,
+    alphabet = /[b-z]/i,
     _englishPhrase = englishPhrase.getPhrase()
 
   this.toPigLatin = function () {
@@ -23,7 +23,8 @@ function Translator(englishPhrase = new PigLatin()) {
 
   function translate(word) {
     let firstLetter = word[0],
-      lastLetter = word[word.length -1]
+      lastLetter = word[word.length -1],
+      isUpperCase = /[A-Z]/.test(firstLetter)
 
     if (isVowel(firstLetter)) {
       if (isConsonant(lastLetter)) {
@@ -44,6 +45,11 @@ function Translator(englishPhrase = new PigLatin()) {
       wordArray.push('ay')
       wordArray.splice(0, constantsTotal)
       word = wordArray.join("");
+    }
+    if(isUpperCase) {
+      word = word.toLowerCase()
+      word = word[0].toUpperCase() + word.split("").splice(1, word.length)
+      word = word.split(",").join("")
     }
     return word
   }

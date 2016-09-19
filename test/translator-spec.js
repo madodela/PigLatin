@@ -13,10 +13,16 @@
       expect(translate.toPigLatin()).to.be.null
     })
 
-    it('Support any number of words in the phrase', function () {
+    it('Supports any number of words in the phrase', function () {
       englishPhrase.setPhrase('hello-world')
       let translate = new Translator(englishPhrase)
       expect(translate.toPigLatin()).to.equal('ellohay-orldway')
+    })
+
+    it('Supports capital letters', function () {
+      englishPhrase.setPhrase('Andrew')
+      let translate = new Translator(englishPhrase)
+      expect(translate.toPigLatin()).to.equal('Andreway')
     })
 
     describe('Translate words that start with vowels', function () {
