@@ -1,36 +1,51 @@
-function Translator(englishPhrase = "") {
+function Translator(englishPhrase = new PigLatin()) {
   const vowels = /[aeiou]/,
-    alphabet = /[b-z]/
+    alphabet = /[b-z]/,
+    _englishPhrase = englishPhrase.getPhrase()
 
   this.toPigLatin = function () {
-    if (!englishPhrase) {
+    if (!_englishPhrase) {
       return null;
     }
 
-    let firstLetter = englishPhrase[0],
-      lastLetter = englishPhrase[englishPhrase.length -1]
+    if(englishPhrase.hasSpacesOrHyphens()) {
+      let words = _englishPhrase.split(/\s|\-/),
+        pigLatinWords = [],
+        separator = _englishPhrase.indexOf('-') >= 0 ? "-": " "
+      for(let i = 0, len = words.length; i < len; i++) {
+        pigLatinWords.push(translate(words[i]))
+      }
+      return pigLatinWords.join(separator).trim();
+    } else {
+      return translate(_englishPhrase);
+    }
+  }
+
+  function translate(word) {
+    let firstLetter = word[0],
+      lastLetter = word[word.length -1]
 
     if (isVowel(firstLetter)) {
       if (isConsonant(lastLetter)) {
-        englishPhrase += 'ay'
+        word += 'ay'
       }
       if (isVowel(lastLetter)) {
-        englishPhrase += 'yay'
+        word += 'yay'
       }
       if (lastLetter === 'y') {
-        englishPhrase += 'nay'
+        word += 'nay'
       }
     }
     if (isConsonant(firstLetter)) {
-      let wordArray = englishPhrase.split(""),
-        constantsTotal = englishPhrase.indexOf(vowels.exec(englishPhrase)),
+      let wordArray = word.split(""),
+        constantsTotal = word.indexOf(vowels.exec(word)),
         constants = wordArray.slice(0, constantsTotal)
       wordArray.push(constants.join(""))
       wordArray.push('ay')
       wordArray.splice(0, constantsTotal)
-      englishPhrase = wordArray.join("");
+      word = wordArray.join("");
     }
-    return englishPhrase;
+    return word
   }
 
   function isVowel (letter) {
