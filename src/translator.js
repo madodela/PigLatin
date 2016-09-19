@@ -12,6 +12,7 @@ function Translator(englishPhrase = new PigLatin()) {
       let words = _englishPhrase.split(/\s|\-/),
         pigLatinWords = [],
         separator = _englishPhrase.indexOf('-') >= 0 ? "-": " "
+
       for(let i = 0, len = words.length; i < len; i++) {
         pigLatinWords.push(translate(words[i]))
       }
@@ -24,7 +25,16 @@ function Translator(englishPhrase = new PigLatin()) {
   function translate(word) {
     let firstLetter = word[0],
       lastLetter = word[word.length -1],
-      isUpperCase = /[A-Z]/.test(firstLetter)
+      isUpperCase = /[A-Z]/.test(firstLetter),
+      punctuation = /[\.:,!;]/.test(lastLetter),
+      sign = ''
+
+      if(punctuation){
+        sign = word.split("").pop()
+        word = word.split("").splice(0, word.length -1)
+        word = word.join("")
+        lastLetter = word[word.length -1]
+      }
 
     if (isVowel(firstLetter)) {
       if (isConsonant(lastLetter)) {
@@ -50,6 +60,9 @@ function Translator(englishPhrase = new PigLatin()) {
       word = word.toLowerCase()
       word = word[0].toUpperCase() + word.split("").splice(1, word.length)
       word = word.split(",").join("")
+    }
+    if(punctuation) {
+      word += sign
     }
     return word
   }

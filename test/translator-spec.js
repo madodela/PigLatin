@@ -26,9 +26,9 @@
     })
 
     it('Retain punctuation', function () {
-      englishPhrase.setPhrase('fantastic!')
+      englishPhrase.setPhrase('Three things: one, two, three.')
       let translate = new Translator(englishPhrase)
-      expect(translate.toPigLatin()).to.equal('antasticfay!')
+      expect(translate.toPigLatin()).to.equal('Eethray ingsthay: oneyay, otway, eethray.')
     })
 
     describe('Translate words that start with vowels', function () {
