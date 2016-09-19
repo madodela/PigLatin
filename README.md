@@ -9,4 +9,4 @@ Unit test was done using mocha and chai, unit test files can be found under *tes
 
 ## To run the unit tests you only need to open *test-runner.html* page in a browser
 
-## To run the translator *index.html* page in a browser
+## To run the translator, open *index.html* page in a browser
