@@ -25,6 +25,12 @@
       expect(translate.toPigLatin()).to.equal('Andreway')
     })
 
+    it('Retain punctuation', function () {
+      englishPhrase.setPhrase('fantastic!')
+      let translate = new Translator(englishPhrase)
+      expect(translate.toPigLatin()).to.equal('antasticfay!')
+    })
+
     describe('Translate words that start with vowels', function () {
       it('Appending "ay" to the word if it ends in a consonant', function () {
         englishPhrase.setPhrase('ask')
