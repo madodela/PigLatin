@@ -22,10 +22,12 @@ function Translator(englishPhrase = "") {
       }
     }
     if (isConsonant(firstLetter)) {
-      let wordArray = englishPhrase.split("")
-      wordArray.push(firstLetter)
+      let wordArray = englishPhrase.split(""),
+        constantsTotal = englishPhrase.indexOf(vowels.exec(englishPhrase)),
+        constants = wordArray.slice(0, constantsTotal)
+      wordArray.push(constants.join(""))
       wordArray.push('ay')
-      wordArray.shift()
+      wordArray.splice(0, constantsTotal)
       englishPhrase = wordArray.join("");
     }
     return englishPhrase;
