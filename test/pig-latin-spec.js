@@ -10,9 +10,11 @@
       expect(pigLatin.getPhrase()).to.be.a('string')
     })
 
-    it('The string can be a list of words separated by spaces', function () {
+    it('The string can be a list of words separated by spaces or hyphens', function () {
       let pigLatin = new PigLatin('hello world')
-      expect(pigLatin.phraseHasSpaces()).to.not.be.false
+      expect(pigLatin.hasSpacesOrHyphens()).to.not.be.false
+      pigLatin.setPhrase('hello-world')
+      expect(pigLatin.hasSpacesOrHyphens()).to.not.be.false
     })
 
     it('The string can be reset without re-initializing', function () {

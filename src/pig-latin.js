@@ -8,7 +8,7 @@ function PigLatin (_phrase = "") {
     _phrase = phrase
   }
 
-  this.phraseHasSpaces = function () {
-    return /\s/g.test(_phrase)
+  this.hasSpacesOrHyphens = function () {
+    return /\s|\-/g.test(_phrase)
   }
 }
