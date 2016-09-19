@@ -25,9 +25,16 @@
     })
 
     describe('Translate words that start with a single consonant', function() {
-      it('Will remove the starting consonant, add it at the end and will append "ay" to the end', function () {
+      it('Removing the starting consonant, adding it at the end and appeding "ay" to the end', function () {
         let translate = new Translator("hello")
         expect(translate.toPigLatin()).to.equal("ellohay")
+      })
+    })
+
+    describe('Translate words that start with multiple consonants', function () {
+      it('Removing all consonants at the front of the word, adding them  and "ay" at the end', function () {
+        let translate = new Translator("known")
+        expect(translate.toPigLatin()).to.equal('ownknay')
       })
     })
   })
