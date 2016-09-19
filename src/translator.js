@@ -50,7 +50,7 @@ function Translator(englishPhrase = new PigLatin()) {
     if (isConsonant(firstLetter)) {
       let wordArray = word.split(""),
         constantsTotal = word.indexOf(vowels.exec(word)),
-        constants = wordArray.slice(0, constantsTotal)
+        constants = constantsTotal >= 0 ? wordArray.slice(0, constantsTotal) : []
       wordArray.push(constants.join(""))
       wordArray.push('ay')
       wordArray.splice(0, constantsTotal)
